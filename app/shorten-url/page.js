@@ -229,93 +229,92 @@ const Page = () => {
       />
 
       <div className="overflow-x-auto">
-      <table className="w-full mt-10 space-y-6 mx-5 sm:mx-auto sm:w-full max-w-screen-md p-4 bg-gray-800 text-white rounded-lg shadow sm:p-6 md:p-8 border border-gray-700 overflow-hidden box-border">
-  <thead className="sticky top-0 bg-blue-600 text-white">
-    <tr>
-      <th className="py-2 px-3 text-sm md:text-base border-b border-r border-gray-700 w-[43%]">Website URL</th>
-      <th className="py-2 px-3 text-sm md:text-base border-b border-r border-gray-700 w-[43%]">Generated URL</th>
-      <th className="py-2 px-3 text-sm md:text-base border-b border-r border-gray-700 w-[14%]">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    {urlArr.length === 0 ? (
-      <tr>
-        <td colSpan="3" className="text-center py-4 text-gray-500 text-sm md:text-base border-b border-r border-gray-700">
-          No saved URLs to show
-        </td>
-      </tr>
-    ) : (
-      urlArr.map((item, index) => (
-        <tr key={item._id} className="border-b border-gray-700">
-          <td className="py-2 px-3 text-sm md:text-base border-b border-r border-gray-700 w-1/2">
-            <div className="flex justify-between items-center gap-2">
-              <Link href={item.url} target="_blank" className="text-blue-400 hover:underline max-w-[98%] truncate text-sm md:text-base" title={item.url}>
-                {item.url}
-              </Link>
-              <button
-                onClick={() => handleCopy(item.url, index, "url")}
-                className="text-gray-500 hover:text-blue-500 hover:outline-blue-500"
-              >
-                {copiedCell?.index === index && copiedCell?.field === "url" ? (
-                  <IoCopy className="text-blue-500" />
-                ) : (
-                  <IoCopyOutline />
-                )}
-              </button>
-            </div>
-          </td>
-          <td className="py-2 px-3 text-sm md:text-base border-b border-r border-gray-700 w-1/2">
-            <div className="flex justify-between items-center gap-2">
-              <Link href={item.generated} target="_blank" className="text-blue-400 hover:underline max-w-[98%] truncate text-sm md:text-base" title={item.generated}>
-                {item.generated}
-              </Link>
-              <button
-                onClick={() => handleCopy(item.generated, index, "generated")}
-                className="text-gray-500 hover:text-blue-500 hover:outline-blue-500"
-              >
-                {copiedCell?.index === index && copiedCell?.field === "generated" ? (
-                  <IoCopy className="text-blue-500" />
-                ) : (
-                  <IoCopyOutline />
-                )}
-              </button>
-            </div>
-          </td>
-          <td className="py-2 px-3 text-sm md:text-base border-b border-r border-gray-700">
-            <div className="flex gap-2 items-center justify-around">
-              <button
-                onClick={() => {
-                  if(window.confirm("Are you sure you want to delete this URL?")) {
-                    handleDelete(index);
-                    toast.info("URL deleted successfully!", {
-                      position: "bottom-right",
-                      autoClose: 2000,
-                      hideProgressBar: true,
-                      closeOnClick: true,
-                      pauseOnHover: true,
-                      draggable: false,
-                      theme: "colored",
-                    });
-                  }
-                }}
-                className="text-red-600 text-sm md:text-base"
-              >
-                <AiOutlineDelete />
-              </button>
-              <button
-                onClick={() => handleEdit(index)}
-                className="text-blue-600 text-sm md:text-base"
-              >
-                <FaRegEdit />
-              </button>
-            </div>
-          </td>
-        </tr>
-      ))
-    )}
-  </tbody>
-</table>
-
+        <table className="mt-10 w-full space-y-6 mx-5 sm:mx-auto sm:w-full max-w-screen-md p-4 bg-gray-800 text-white rounded-lg shadow sm:p-6 md:p-8 border border-gray-700 overflow-hidden box-border">
+          <thead className="sticky top-0 bg-blue-600 text-white">
+            <tr>
+              <th className="py-2 px-3 text-sm md:text-base border-b border-r border-gray-700 sm:w-[40%] md:w-[43%]">Website URL</th>
+              <th className="py-2 px-3 text-sm md:text-base border-b border-r border-gray-700 sm:w-[40%] md:w-[43%]">Generated URL</th>
+              <th className="py-2 px-3 text-sm md:text-base border-b border-r border-gray-700 w-[14%]">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {urlArr.length === 0 ? (
+              <tr>
+                <td colSpan="3" className="text-center py-4 text-gray-500 text-sm md:text-base border-b border-r border-gray-700">
+                  No saved URLs to show
+                </td>
+              </tr>
+            ) : (
+              urlArr.map((item, index) => (
+                <tr key={item._id} className="border-b border-gray-700">
+                  <td className="py-2 px-3 text-sm md:text-base border-b border-r border-gray-700 sm:w-[40%] md:w-[43%]">
+                    <div className="flex justify-between items-center gap-2">
+                      <Link href={item.url} target="_blank" className="text-blue-400 hover:underline max-w-[98%] truncate text-sm md:text-base" title={item.url}>
+                        {item.url}
+                      </Link>
+                      <button
+                        onClick={() => handleCopy(item.url, index, "url")}
+                        className="text-gray-500 hover:text-blue-500 hover:outline-blue-500"
+                      >
+                        {copiedCell?.index === index && copiedCell?.field === "url" ? (
+                          <IoCopy className="text-blue-500" />
+                        ) : (
+                          <IoCopyOutline />
+                        )}
+                      </button>
+                    </div>
+                  </td>
+                  <td className="py-2 px-3 text-sm md:text-base border-b border-r border-gray-700 sm:w-[40%] md:w-[43%]">
+                    <div className="flex justify-between items-center gap-2">
+                      <Link href={item.generated} target="_blank" className="text-blue-400 hover:underline max-w-[98%] truncate text-sm md:text-base" title={item.generated}>
+                        {item.generated}
+                      </Link>
+                      <button
+                        onClick={() => handleCopy(item.generated, index, "generated")}
+                        className="text-gray-500 hover:text-blue-500 hover:outline-blue-500"
+                      >
+                        {copiedCell?.index === index && copiedCell?.field === "generated" ? (
+                          <IoCopy className="text-blue-500" />
+                        ) : (
+                          <IoCopyOutline />
+                        )}
+                      </button>
+                    </div>
+                  </td>
+                  <td className="py-2 px-3 text-sm md:text-base border-b border-r border-gray-700">
+                    <div className="flex gap-2 items-center justify-around">
+                      <button
+                        onClick={() => {
+                          if (window.confirm("Are you sure you want to delete this URL?")) {
+                            handleDelete(index);
+                            toast.info("URL deleted successfully!", {
+                              position: "bottom-right",
+                              autoClose: 2000,
+                              hideProgressBar: true,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: false,
+                              theme: "colored",
+                            });
+                          }
+                        }}
+                        className="text-red-600 text-sm md:text-base"
+                      >
+                        <AiOutlineDelete />
+                      </button>
+                      <button
+                        onClick={() => handleEdit(index)}
+                        className="text-blue-600 text-sm md:text-base"
+                      >
+                        <FaRegEdit />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
 
       </div>
     </>
